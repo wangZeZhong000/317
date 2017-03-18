@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+<script src="jq.js"></script>
+<script>
+    //$.each
+
+    jQuery.extend({
+        each: function (array, callback) {
+            for (var i = 0; i < array.length; i++) {
+                //i：索引
+                //array[i]：值
+
+                //希望让回调函数内部的this指向元素的值，应该使用上下文模式
+                var result=callback.call(array[i],i,array[i]);
+
+                //应该让用户可以实现在某种条件下终止遍历-->break;
+                if(result===false){
+                    break;
+                }
+
+            }
+        },//$.each=function(){}
+    });
+
+
+    var lis=$("li");
+    $.each(lis,function(i,dom){
+        dom.style.backgroundColor="red";
+    });
+
+    //jquery希望如果用户对DOM元素来操作
+    $.each(lis,function(){
+        //让回调函数内部的this指向DOM元素
+        this.style.color="white";
+    });
+
+
+    //以下情况的遍历不建议this，建议使用形参获取
+    var arr=[1,3,5,7,3];
+    var index=-1;;
+    $.each(arr,function(i,v){
+        console.log(this);
+        if(v==3){
+            console.log("----------");
+        }
+    });
+
+</script>
+</html>

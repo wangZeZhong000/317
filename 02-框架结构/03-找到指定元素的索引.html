@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    //$.each
+
+    jQuery.extend({
+        each: function (array, callback) {
+            for (var i = 0; i < array.length; i++) {
+                //i：索引
+                //array[i]：值
+
+                //这里执行用户的操作，不清楚用户要执行什么样的操作，所以把操作用函数封装起来(回调函数)
+                var result=callback(i, array[i]);
+
+                //应该让用户可以实现在某种条件下终止遍历-->break;
+                if(result===false){
+                    break;
+                }
+
+            }
+        },//$.each=function(){}
+    });
+
+    var arr = [1, 3, 5, 7, 3];
+
+    var index=-1;
+
+    $.each(arr,function(i,v){
+        //判断元素的值是否==3
+        if(v==3){
+            index=i;
+
+            return false;
+            //写了跟没写一样，因为return语句只有2个功能，一个设置返回值，一个值终止函数的执行
+            //      return;-->返回值为undefined默认返回值就是undefined
+            //      这行代码后面没有任何代码了，所以写了return;没有任何意义
+
+
+            //break;  //break只能出现在循环或者switch语句中
+        }
+    });
+
+    alert(index);
+</script>
+</html>

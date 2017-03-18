@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+<script src="jq.js"></script>
+<script>
+    jQuery.fn.extend({
+        //方便jquery对象中DOM元素的遍历
+        each:function(callback){
+            //要遍历的对象：this
+            jQuery.each(this,callback);
+        }
+    })
+
+
+    var lis=$("li");
+    $.each(lis,function(){
+        this.style.backgroundColor="red";
+    });
+
+    //希望实现：
+    lis.each(function(){
+        this.style.fontSize="30px";
+    })
+</script>
+</html>

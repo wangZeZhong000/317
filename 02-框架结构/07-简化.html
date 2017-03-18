@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    //Geekor：极客
+
+    //each方法在哪里？$-->$.each()
+
+    jQuery.extend({
+        each: function (array, callback) {
+            //2个功能：数组、伪数组--->for循环；其他对象--->for...in循环
+
+            var i, len = array.length;
+
+            if (typeof len === "number" && len >= 0 && len - 1 in array) {//判断array是否是一个数组/伪数组
+                for (i = 0; i < len;) {
+                    if (callback.call(array[i], i, array[i++]) === false) break;
+                }
+            } else {
+                for (i in array) {
+                    if (callback.call(array[i], i, array[i]) === false) break;
+                }
+            }
+
+
+        }
+    });
+
+    var index = -1;
+    $.each([1, 3, 5, 7, 3], function (i, v) {
+        //this-->数组中每一个元素的值
+
+        if (v === 3) {
+            index = i;
+            return false;
+        }
+    });
+    console.log(index);
+
+    $.each({name: "zhangsan", age: 20}, function (key, value) {
+        console.log(key);
+        console.log(value);
+    });
+
+    //$.each({0:{},1:{}})
+</script>
+</html>

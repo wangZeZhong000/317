@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    typeof 1;//"number"
+    typeof "abc";//"string"
+    typeof true;//"boolean"
+    typeof null;//"object"
+    typeof undefined;//"undefined"
+    typeof [];//"object"
+    typeof Date;//"function"
+
+    Object.prototype.toString.call(1);//"[object Number]"
+    Object.prototype.toString.call("abc");//"[object String]"
+    Object.prototype.toString.call(true);//"[object Boolean]"
+    Object.prototype.toString.call(null);//"[object Null]"
+    Object.prototype.toString.call(undefined);//"[object Undefined]"
+    Object.prototype.toString.call(function(){});//"[object Function]"
+    Object.prototype.toString.call(new Date());//"[object Date]"
+    Object.prototype.toString.call([]);//"[object Array]"
+    Object.prototype.toString.call(/abc/);//"[object RegExp]"
+    Object.prototype.toString.call(Math);//"[object Math]"
+    Object.prototype.toString.call({});//"[object Object]"
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    var types="Number String Boolean Null Undefined Array RegExp Function Math Date Object".split(" ");
+    var class2type={};//{ "[object Xxxx]":"xxxx" }
+    for (var i = 0; i < types.length; i++) {
+        var type = types[i];//type是大写的类型名称
+        class2type["[object "+type+"]"]=type.toLowerCase();//class2type["[object Number]"]="number"
+    }
+
+
+    jQuery.extend({
+        isString: function (str) {
+            return typeof str == "string";
+        },
+        isFunction: function (fn) {
+            return typeof fn === "function";
+        },
+        //因为浏览器已经在ES5中原生支持了Array.isArray方法，在ES5之前没有该方法(Array.isArray值为undefined)
+        isArray: Array.isArray || function (array) {
+            return Object.prototype.toString.call(array)==="[object Array]";
+        },
+        /**
+         *
+         * @param data
+         * return 字符串的值，是该数据的数据类型的名称的小写格式
+         */
+        type:function(data){
+//            //1、检测数据额类型
+//            var result=Object.prototype.toString.call(data);//"[object Xxxx]"
+//
+//            //2、发现result正好就是class2type中的属性名称，而type方法的返回值也就是class2type的属性值
+//            return class2type[result];
+
+            //简化后：
+            return class2type[Object.prototype.toString.call(data)];
+        }
+    });
+
+    console.log($.type(1));
+    console.log($.type(null));
+    console.log($.type(undefined));
+    console.log($.type({}));
+    console.log($.type([]));
+
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+<script src="jq.js"></script>
+<script>
+    //$.each
+
+    var arr = [1, 3, 5, 7, 3];
+    //1、求数组的最大值：
+    var max = arr[0];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > max) max = arr[i];
+    }
+    alert(max);
+
+    //2、找出数组中第一个3的索引:arr.indexOf-->1
+    var index = -1;// str.indexOf("a")-->-1   arr.indexOf(1)-->-1
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == 3) {
+            index = i;
+            break;
+        }
+
+    }
+    alert(index);
+
+    //3、给页面中的li标签设置背景色
+    var lis=document.querySelectorAll("li");//{0:li,1:li,length:2}
+    for (var i = 0; i < lis.length; i++) {
+        var li = lis[i];
+        li.style.backgroundColor="pink";
+    }
+</script>
+</html>

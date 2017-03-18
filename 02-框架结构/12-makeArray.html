@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    function isLikeArray(array) {
+        var len = array.length;
+        return typeof len === "number" && len >= 0 && len - 1 in array;
+    }
+
+    jQuery.extend({
+        /**
+         * 将参数转换为数组
+         * 1、如果参数是数组、伪数组，将参数转换为数组  $.makeArray({0:10,1:20,length:2})-->[10,20]
+         * 2、参数是其他类型，将参数作为整体放到一个数组中 $.mekeArray({a:100})-->[{a:100}]
+         * @param data
+         */
+        makeArray: function (data) {
+//            if (isLikeArray(data)) {
+//                //将data转换为真数组：不使用slice方法(slice方法有点兼容性问题)
+//                return jQuery.merge([], data);
+//
+//            } else {
+//                return [data];
+//            }
+
+            //简化后：
+            return isLikeArray(data) ?
+                    jQuery.merge([], data) :
+                    [data];
+        }
+    });
+
+    console.log($.makeArray(100));//[100]
+    console.log($.makeArray({0: "a", 1: "b", 2: "c", length: 3}));//[100]
+
+</script>
+</html>

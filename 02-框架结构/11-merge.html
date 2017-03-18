@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    //$.merge：实现合并2个数组或者伪数组
+
+    var target={0:"a",1:"b",2:"c",length:3};
+    var source={0:10,1:20,length:2};
+
+//    target[3]=source[0];  target.length++
+//    target[4]=source[1];
+
+    //代码：target[target.length]=source[i]   target.length++;
+
+    jQuery.extend({
+        /**
+         *
+         * @param target 数组 or伪数组
+         * @param source 数组 or伪数组
+         * @returns {*}
+         */
+        merge:function(target,source){
+            //将source中的每一元素追击到target末尾
+
+            var len=target.length;
+            for (var i = 0; i < source.length; i++) {
+                //需要将source[i]追加到target的末尾
+
+                target[len]=source[i];
+                len++;
+            }
+
+            target.length=len;
+
+            return target;
+
+        }
+    });
+
+    console.log($.merge(target,source));
+    console.log($.merge([1,2,3],source));
+
+    var target1=[1,3,5];
+    var target2={0:100,1:200,2:300,length:3};
+    var source1=["a","b","c"];
+
+
+    //遍历source1
+    //len=3 i=0
+    //      target1[3]="a"  -->target1.length:4   len:4
+    //      target2[3]="a"  -->target2.length:3   len:4
+
+    //i=1 len=4
+    //      target1[4]="b"  -->target1.length:5   len:5
+    //      target2[4]="b"  -->target2.length:3   len:5
+
+    //i=2 len=5
+    //      target1[5]="c"  -->target1.length:6   len:6
+    //      target2[5]="c"  -->target2.length:3   len:6
+
+    //target1.length=6;   //target1是一个数组，长度本身就为6，设置6相当于无效
+    //target2.length=6;   //target2是一个伪数组，长度为3，设置6是它的最终结果
+
+</script>
+</html>

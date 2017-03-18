@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="jq.js"></script>
+<script>
+    jQuery.extend({
+        //去除字符串的首尾空格-->正则表达式
+        trim:function(str){
+            return str.replace(/^\s+/,"").replace(/\s+$/,"");
+        },
+
+        trim2:function(str){
+            return str.replace(/^\s+|\s+$/g,"");
+        }
+    });
+
+    console.log($.trim2("               a   b   dcc            "));
+</script>
+</html>

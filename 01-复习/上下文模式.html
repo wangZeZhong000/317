@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function fn(a,b,c){
+
+    }
+
+    fn.call(5,10,20,30);//fn函数内部的this指向Number的实例
+    //数字-->NUmber
+    //字符串--->String
+    //布尔值-->Boolean
+
+    //null/undefined--->window
+    //对象--->该对象
+
+    fn.apply(5,[10,20,30]);
+    fn.apply(5,{0:10,1:20,2:30,length:3});
+
+
+</script>
+</html>
